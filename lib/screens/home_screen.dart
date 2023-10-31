@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
-                actions: [
+        actions: [
           IconButton(
             icon: const Icon(Icons.delete),
             onPressed: () {
