@@ -13,6 +13,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+                actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              context.read<ContactProvider>().clearContacts();
+            },
+          ),
+        ],
       ),
        body: Consumer<ContactProvider>(
         builder: (context, provider, child) {

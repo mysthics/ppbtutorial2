@@ -24,7 +24,7 @@ class AddEditContactScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Contact'),
+      title: Text(isEdit ? 'Edit Contact' : 'Add Contact'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,7 +55,7 @@ class AddEditContactScreen extends StatelessWidget {
                 final email = emailController.text;
                 final phone = phoneController.text;
 
-                final newContact = Contact(
+                 final newContact = Contact(
                   id: isEdit
                       ? existingContact.id
                       : DateTime.now().millisecondsSinceEpoch,
@@ -63,6 +63,12 @@ class AddEditContactScreen extends StatelessWidget {
                   email: email,
                   phone: phone,
                 );
+
+                if (isEdit) {
+                  context.read<ContactProvider>().editContact(newContact);
+                } else {
+                  context.read<ContactProvider>().addContact(newContact);
+                }
 
                 if (isEdit) {
                   context.read<ContactProvider>().editContact(newContact);
