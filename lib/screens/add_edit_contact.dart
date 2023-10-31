@@ -55,6 +55,21 @@ class AddEditContactScreen extends StatelessWidget {
                 final email = emailController.text;
                 final phone = phoneController.text;
 
+                final newContact = Contact(
+                  id: isEdit
+                      ? existingContact.id
+                      : DateTime.now().millisecondsSinceEpoch,
+                  name: name,
+                  email: email,
+                  phone: phone,
+                );
+
+                if (isEdit) {
+                  context.read<ContactProvider>().editContact(newContact);
+                } else {
+                  context.read<ContactProvider>().addContact(newContact);
+                }
+
                 final contact = Contact(
                   id: DateTime.now().millisecondsSinceEpoch,
                   name: name,
