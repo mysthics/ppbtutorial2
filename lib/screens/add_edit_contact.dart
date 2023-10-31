@@ -12,6 +12,16 @@ class AddEditContactScreen extends StatelessWidget {
     final emailController = TextEditingController();
     final phoneController = TextEditingController();
 
+     final existingContact =
+        ModalRoute.of(context)!.settings.arguments as Contact?;
+    final isEdit = existingContact != null;
+
+    if (isEdit) {
+      nameController.text = existingContact.name;
+      emailController.text = existingContact.email;
+      phoneController.text = existingContact.phone;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Contact'),
