@@ -38,6 +38,15 @@ class HomeScreen extends StatelessWidget {
                     provider.removeContact(contact);
                   },
                 ),
+                  onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddEditContactScreen(),
+                      settings: RouteSettings(arguments: contact),
+                    ),
+                  );
+                },
               );
             },
           );
