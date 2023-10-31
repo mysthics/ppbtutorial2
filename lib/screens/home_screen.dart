@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppb_tutor2/providers/contact_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:ppb_tutor2/screens/add_edit_contact.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,6 +42,17 @@ class HomeScreen extends StatelessWidget {
             },
           );
         },
+      ),
+        floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddEditContactScreen(),
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
